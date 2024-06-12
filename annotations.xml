@@ -1,0 +1,778 @@
+<?xml version="1.0" encoding="utf-8"?>
+<annotations>
+  <version>1.1</version>
+  <meta>
+    <job>
+      <id>948284</id>
+      <size>239</size>
+      <mode>annotation</mode>
+      <overlap>0</overlap>
+      <bugtracker></bugtracker>
+      <created>2024-06-11 19:59:24.987060+00:00</created>
+      <updated>2024-06-11 20:46:01.103619+00:00</updated>
+      <subset>default</subset>
+      <start_frame>0</start_frame>
+      <stop_frame>238</stop_frame>
+      <frame_filter></frame_filter>
+      <segments>
+        <segment>
+          <id>950120</id>
+          <start>0</start>
+          <stop>238</stop>
+          <url>https://app.cvat.ai/api/jobs/948284</url>
+        </segment>
+      </segments>
+      <owner>
+        <username>s3976</username>
+        <email>purplebelt2003@gmail.com</email>
+      </owner>
+      <assignee></assignee>
+      <labels>
+        <label>
+          <name>Enemy</name>
+          <color>#ef0966</color>
+          <type>any</type>
+          <attributes>
+          </attributes>
+        </label>
+      </labels>
+    </job>
+    <dumped>2024-06-11 20:46:28.730379+00:00</dumped>
+  </meta>
+  <image id="0" name="image0.jpg" width="1920" height="400">
+  </image>
+  <image id="1" name="image1.jpg" width="1920" height="400">
+  </image>
+  <image id="2" name="image10.jpg" width="1920" height="400">
+  </image>
+  <image id="3" name="image100.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="1051.48" ytl="117.67" xbr="1115.03" ybr="175.83" z_order="0">
+    </box>
+  </image>
+  <image id="4" name="image101.jpg" width="1920" height="400">
+  </image>
+  <image id="5" name="image102.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="944.42" ytl="24.04" xbr="1019.24" ybr="265.25" z_order="0">
+    </box>
+  </image>
+  <image id="6" name="image103.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="961.57" ytl="188.42" xbr="987.42" ybr="253.68" z_order="0">
+    </box>
+  </image>
+  <image id="7" name="image104.jpg" width="1920" height="400">
+  </image>
+  <image id="8" name="image105.jpg" width="1920" height="400">
+  </image>
+  <image id="9" name="image106.jpg" width="1920" height="400">
+  </image>
+  <image id="10" name="image107.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="1024.26" ytl="225.90" xbr="1168.37" ybr="399.09" z_order="0">
+    </box>
+  </image>
+  <image id="11" name="image108.jpg" width="1920" height="400">
+  </image>
+  <image id="12" name="image109.jpg" width="1920" height="400">
+  </image>
+  <image id="13" name="image11.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="951.23" ytl="200.69" xbr="975.79" ybr="245.93" z_order="0">
+    </box>
+  </image>
+  <image id="14" name="image110.jpg" width="1920" height="400">
+  </image>
+  <image id="15" name="image111.jpg" width="1920" height="400">
+  </image>
+  <image id="16" name="image112.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="1000.99" ytl="198.75" xbr="1026.84" ybr="236.88" z_order="0">
+    </box>
+  </image>
+  <image id="17" name="image113.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="957.69" ytl="166.44" xbr="1002.28" ybr="269.19" z_order="0">
+    </box>
+  </image>
+  <image id="18" name="image114.jpg" width="1920" height="400">
+  </image>
+  <image id="19" name="image115.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="1022.32" ytl="187.77" xbr="1062.38" ybr="238.18" z_order="0">
+    </box>
+  </image>
+  <image id="20" name="image116.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="958.99" ytl="174.80" xbr="1026.84" ybr="303.45" z_order="0">
+    </box>
+  </image>
+  <image id="21" name="image117.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="1161.90" ytl="185.18" xbr="1205.20" ybr="250.45" z_order="0">
+    </box>
+  </image>
+  <image id="22" name="image118.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="916.33" ytl="65.58" xbr="954.76" ybr="141.93" z_order="0">
+    </box>
+  </image>
+  <image id="23" name="image119.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="1076.26" ytl="172.28" xbr="1118.26" ybr="268.14" z_order="0">
+    </box>
+  </image>
+  <image id="24" name="image12.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="952.39" ytl="190.05" xbr="980.94" ybr="250.91" z_order="0">
+    </box>
+  </image>
+  <image id="25" name="image120.jpg" width="1920" height="400">
+  </image>
+  <image id="26" name="image121.jpg" width="1920" height="400">
+  </image>
+  <image id="27" name="image122.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="951.90" ytl="183.59" xbr="987.40" ybr="256.29" z_order="0">
+    </box>
+  </image>
+  <image id="28" name="image123.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="1095.64" ytl="212.67" xbr="1118.80" ybr="243.37" z_order="0">
+    </box>
+  </image>
+  <image id="29" name="image124.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="1047.71" ytl="148.05" xbr="1078.95" ybr="209.44" z_order="0">
+    </box>
+  </image>
+  <image id="30" name="image125.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="927.08" ytl="148.05" xbr="958.32" ybr="216.44" z_order="0">
+    </box>
+  </image>
+  <image id="31" name="image126.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="1098.34" ytl="194.36" xbr="1172.11" ybr="337.61" z_order="0">
+    </box>
+  </image>
+  <image id="32" name="image127.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="1320.75" ytl="155.05" xbr="1426.30" ybr="357.00" z_order="0">
+    </box>
+  </image>
+  <image id="33" name="image128.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="1110.72" ytl="181.44" xbr="1180.19" ybr="328.45" z_order="0">
+    </box>
+  </image>
+  <image id="34" name="image129.jpg" width="1920" height="400">
+  </image>
+  <image id="35" name="image13.jpg" width="1920" height="400">
+  </image>
+  <image id="36" name="image130.jpg" width="1920" height="400">
+  </image>
+  <image id="37" name="image131.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="905.00" ytl="193.28" xbr="928.70" ybr="241.21" z_order="0">
+    </box>
+  </image>
+  <image id="38" name="image132.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="1002.48" ytl="197.05" xbr="1027.79" ybr="242.83" z_order="0">
+    </box>
+  </image>
+  <image id="39" name="image133.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="851.15" ytl="194.90" xbr="881.85" ybr="247.14" z_order="0">
+    </box>
+  </image>
+  <image id="40" name="image134.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="927.10" ytl="174.43" xbr="956.16" ybr="237.98" z_order="0">
+    </box>
+  </image>
+  <image id="41" name="image135.jpg" width="1920" height="400">
+  </image>
+  <image id="42" name="image136.jpg" width="1920" height="400">
+  </image>
+  <image id="43" name="image137.jpg" width="1920" height="400">
+  </image>
+  <image id="44" name="image138.jpg" width="1920" height="400">
+  </image>
+  <image id="45" name="image139.jpg" width="1920" height="400">
+  </image>
+  <image id="46" name="image14.jpg" width="1920" height="400">
+  </image>
+  <image id="47" name="image140.jpg" width="1920" height="400">
+  </image>
+  <image id="48" name="image141.jpg" width="1920" height="400">
+  </image>
+  <image id="49" name="image142.jpg" width="1920" height="400">
+  </image>
+  <image id="50" name="image143.jpg" width="1920" height="400">
+  </image>
+  <image id="51" name="image144.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="810.23" ytl="229.09" xbr="869.79" ybr="337.96" z_order="0">
+    </box>
+  </image>
+  <image id="52" name="image145.jpg" width="1920" height="400">
+  </image>
+  <image id="53" name="image146.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="974.01" ytl="219.78" xbr="1003.79" ybr="269.10" z_order="0">
+    </box>
+  </image>
+  <image id="54" name="image147.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="971.87" ytl="189.54" xbr="999.79" ybr="246.30" z_order="0">
+    </box>
+  </image>
+  <image id="55" name="image148.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="989.56" ytl="190.47" xbr="1014.68" ybr="244.44" z_order="0">
+    </box>
+  </image>
+  <image id="56" name="image149.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="1016.54" ytl="188.61" xbr="1044.46" ybr="247.23" z_order="0">
+    </box>
+  </image>
+  <image id="57" name="image15.jpg" width="1920" height="400">
+  </image>
+  <image id="58" name="image150.jpg" width="1920" height="400">
+  </image>
+  <image id="59" name="image151.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="1137.52" ytl="195.10" xbr="1170.09" ybr="256.54" z_order="0">
+    </box>
+  </image>
+  <image id="60" name="image152.jpg" width="1920" height="400">
+  </image>
+  <image id="61" name="image153.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="1023.06" ytl="174.65" xbr="1064.00" ybr="251.89" z_order="0">
+    </box>
+  </image>
+  <image id="62" name="image154.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="1076.10" ytl="166.27" xbr="1111.46" ybr="241.65" z_order="0">
+    </box>
+  </image>
+  <image id="63" name="image155.jpg" width="1920" height="400">
+  </image>
+  <image id="64" name="image156.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="511.14" ytl="2.40" xbr="601.50" ybr="129.05" z_order="0">
+    </box>
+  </image>
+  <image id="65" name="image157.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="1031.43" ytl="223.00" xbr="1051.90" ybr="275.15" z_order="0">
+    </box>
+  </image>
+  <image id="66" name="image158.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="969.08" ytl="173.72" xbr="989.56" ybr="219.32" z_order="0">
+    </box>
+  </image>
+  <image id="67" name="image159.jpg" width="1920" height="400">
+  </image>
+  <image id="68" name="image16.jpg" width="1920" height="400">
+  </image>
+  <image id="69" name="image160.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="951.17" ytl="202.83" xbr="1015.14" ybr="313.33" z_order="0">
+    </box>
+  </image>
+  <image id="70" name="image161.jpg" width="1920" height="400">
+  </image>
+  <image id="71" name="image162.jpg" width="1920" height="400">
+  </image>
+  <image id="72" name="image163.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="1030.07" ytl="152.80" xbr="1092.61" ybr="294.62" z_order="0">
+    </box>
+  </image>
+  <image id="73" name="image164.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="1052.41" ytl="146.10" xbr="1089.26" ybr="229.85" z_order="0">
+    </box>
+  </image>
+  <image id="74" name="image165.jpg" width="1920" height="400">
+  </image>
+  <image id="75" name="image166.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="949.70" ytl="226.73" xbr="973.49" ybr="278.33" z_order="0">
+    </box>
+  </image>
+  <image id="76" name="image167.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="943.10" ytl="251.30" xbr="969.59" ybr="302.41" z_order="0">
+    </box>
+  </image>
+  <image id="77" name="image168.jpg" width="1920" height="400">
+  </image>
+  <image id="78" name="image169.jpg" width="1920" height="400">
+  </image>
+  <image id="79" name="image17.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="943.51" ytl="187.05" xbr="966.84" ybr="223.40" z_order="0">
+    </box>
+  </image>
+  <image id="80" name="image170.jpg" width="1920" height="400">
+  </image>
+  <image id="81" name="image171.jpg" width="1920" height="400">
+  </image>
+  <image id="82" name="image172.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="833.67" ytl="222.60" xbr="877.87" ybr="288.50" z_order="0">
+    </box>
+  </image>
+  <image id="83" name="image173.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="981.01" ytl="231.89" xbr="1010.48" ybr="279.97" z_order="0">
+    </box>
+  </image>
+  <image id="84" name="image174.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="786.44" ytl="201.65" xbr="834.52" ybr="341.24" z_order="0">
+    </box>
+  </image>
+  <image id="85" name="image175.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="1018.31" ytl="90.80" xbr="1085.80" ybr="252.06" z_order="0">
+    </box>
+  </image>
+  <image id="86" name="image176.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="970.35" ytl="223.14" xbr="992.34" ybr="264.87" z_order="0">
+    </box>
+  </image>
+  <image id="87" name="image177.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="950.06" ytl="234.71" xbr="965.81" ybr="272.41" z_order="0">
+    </box>
+  </image>
+  <image id="88" name="image178.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="762.77" ytl="214.48" xbr="817.70" ybr="359.60" z_order="0">
+    </box>
+  </image>
+  <image id="89" name="image179.jpg" width="1920" height="400">
+  </image>
+  <image id="90" name="image18.jpg" width="1920" height="400">
+  </image>
+  <image id="91" name="image180.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="1049.30" ytl="221.61" xbr="1090.80" ybr="350.32" z_order="0">
+    </box>
+  </image>
+  <image id="92" name="image181.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="920.14" ytl="222.63" xbr="957.29" ybr="349.19" z_order="0">
+    </box>
+  </image>
+  <image id="93" name="image182.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="923.91" ytl="197.90" xbr="948.14" ybr="251.71" z_order="0">
+    </box>
+  </image>
+  <image id="94" name="image183.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="930.37" ytl="141.85" xbr="955.14" ybr="189.24" z_order="0">
+    </box>
+  </image>
+  <image id="95" name="image184.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="878.67" ytl="211.86" xbr="917.98" ybr="301.80" z_order="0">
+    </box>
+  </image>
+  <image id="96" name="image185.jpg" width="1920" height="400">
+  </image>
+  <image id="97" name="image186.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="847.92" ytl="226.46" xbr="908.23" ybr="308.85" z_order="0">
+    </box>
+  </image>
+  <image id="98" name="image187.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="968.28" ytl="243.20" xbr="992.96" ybr="276.41" z_order="0">
+    </box>
+  </image>
+  <image id="99" name="image188.jpg" width="1920" height="400">
+  </image>
+  <image id="100" name="image189.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="968.55" ytl="229.30" xbr="998.28" ybr="295.82" z_order="0">
+    </box>
+  </image>
+  <image id="101" name="image19.jpg" width="1920" height="400">
+  </image>
+  <image id="102" name="image190.jpg" width="1920" height="400">
+  </image>
+  <image id="103" name="image191.jpg" width="1920" height="400">
+  </image>
+  <image id="104" name="image192.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="834.75" ytl="83.20" xbr="899.90" ybr="255.60" z_order="0">
+    </box>
+  </image>
+  <image id="105" name="image193.jpg" width="1920" height="400">
+  </image>
+  <image id="106" name="image194.jpg" width="1920" height="400">
+  </image>
+  <image id="107" name="image195.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="952.35" ytl="198.32" xbr="978.83" ybr="253.56" z_order="0">
+    </box>
+  </image>
+  <image id="108" name="image196.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="1017.42" ytl="197.90" xbr="1038.96" ybr="253.11" z_order="0">
+    </box>
+  </image>
+  <image id="109" name="image197.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="879.65" ytl="256.70" xbr="907.02" ybr="312.80" z_order="0">
+    </box>
+  </image>
+  <image id="110" name="image198.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="931.30" ytl="186.25" xbr="957.73" ybr="244.14" z_order="0">
+    </box>
+  </image>
+  <image id="111" name="image199.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="796.62" ytl="190.29" xbr="830.28" ybr="246.83" z_order="0">
+    </box>
+  </image>
+  <image id="112" name="image2.jpg" width="1920" height="400">
+  </image>
+  <image id="113" name="image20.jpg" width="1920" height="400">
+  </image>
+  <image id="114" name="image200.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="913.10" ytl="189.50" xbr="938.80" ybr="245.20" z_order="0">
+    </box>
+  </image>
+  <image id="115" name="image201.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="834.71" ytl="196.20" xbr="859.64" ybr="254.79" z_order="0">
+    </box>
+  </image>
+  <image id="116" name="image202.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="998.22" ytl="189.00" xbr="1025.69" ybr="246.11" z_order="0">
+    </box>
+  </image>
+  <image id="117" name="image203.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="972.90" ytl="198.18" xbr="1000.00" ybr="266.04" z_order="0">
+    </box>
+  </image>
+  <image id="118" name="image204.jpg" width="1920" height="400">
+  </image>
+  <image id="119" name="image205.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="934.84" ytl="177.67" xbr="954.10" ybr="222.59" z_order="0">
+    </box>
+  </image>
+  <image id="120" name="image206.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="931.73" ytl="192.21" xbr="954.58" ybr="223.89" z_order="0">
+    </box>
+  </image>
+  <image id="121" name="image207.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="959.77" ytl="182.08" xbr="980.29" ybr="224.41" z_order="0">
+    </box>
+  </image>
+  <image id="122" name="image208.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="915.88" ytl="179.98" xbr="946.27" ybr="213.76" z_order="0">
+    </box>
+  </image>
+  <image id="123" name="image209.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="977.94" ytl="184.70" xbr="997.90" ybr="227.12" z_order="0">
+    </box>
+  </image>
+  <image id="124" name="image21.jpg" width="1920" height="400">
+  </image>
+  <image id="125" name="image210.jpg" width="1920" height="400">
+  </image>
+  <image id="126" name="image211.jpg" width="1920" height="400">
+  </image>
+  <image id="127" name="image212.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="919.36" ytl="152.79" xbr="957.40" ybr="230.40" z_order="0">
+    </box>
+  </image>
+  <image id="128" name="image213.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="967.90" ytl="160.82" xbr="997.63" ybr="250.65" z_order="0">
+    </box>
+  </image>
+  <image id="129" name="image214.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="839.30" ytl="170.99" xbr="876.50" ybr="244.80" z_order="0">
+    </box>
+  </image>
+  <image id="130" name="image215.jpg" width="1920" height="400">
+  </image>
+  <image id="131" name="image216.jpg" width="1920" height="400">
+  </image>
+  <image id="132" name="image217.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="1081.69" ytl="153.49" xbr="1120.47" ybr="233.19" z_order="0">
+    </box>
+  </image>
+  <image id="133" name="image218.jpg" width="1920" height="400">
+  </image>
+  <image id="134" name="image219.jpg" width="1920" height="400">
+  </image>
+  <image id="135" name="image22.jpg" width="1920" height="400">
+  </image>
+  <image id="136" name="image220.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="860.30" ytl="223.10" xbr="919.85" ybr="323.63" z_order="0">
+    </box>
+  </image>
+  <image id="137" name="image221.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="1061.30" ytl="183.12" xbr="1101.32" ybr="272.45" z_order="0">
+    </box>
+  </image>
+  <image id="138" name="image222.jpg" width="1920" height="400">
+  </image>
+  <image id="139" name="image223.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="636.85" ytl="259.27" xbr="726.81" ybr="399.63" z_order="0">
+    </box>
+  </image>
+  <image id="140" name="image224.jpg" width="1920" height="400">
+  </image>
+  <image id="141" name="image225.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="936.74" ytl="234.33" xbr="952.58" ybr="254.85" z_order="0">
+    </box>
+  </image>
+  <image id="142" name="image226.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="909.40" ytl="82.61" xbr="977.40" ybr="274.31" z_order="0">
+    </box>
+  </image>
+  <image id="143" name="image227.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="917.24" ytl="229.75" xbr="934.07" ybr="260.05" z_order="0">
+    </box>
+  </image>
+  <image id="144" name="image228.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="926.74" ytl="215.24" xbr="947.62" ybr="257.94" z_order="0">
+    </box>
+  </image>
+  <image id="145" name="image229.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="975.05" ytl="216.49" xbr="1002.78" ybr="252.95" z_order="0">
+    </box>
+  </image>
+  <image id="146" name="image23.jpg" width="1920" height="400">
+  </image>
+  <image id="147" name="image230.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="889.12" ytl="135.62" xbr="923.22" ybr="203.84" z_order="0">
+    </box>
+  </image>
+  <image id="148" name="image231.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="971.30" ytl="222.47" xbr="1013.27" ybr="327.16" z_order="0">
+    </box>
+  </image>
+  <image id="149" name="image232.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="1002.02" ytl="2.43" xbr="1047.78" ybr="79.20" z_order="0">
+    </box>
+  </image>
+  <image id="150" name="image233.jpg" width="1920" height="400">
+  </image>
+  <image id="151" name="image234.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="864.67" ytl="117.40" xbr="910.98" ybr="225.65" z_order="0">
+    </box>
+  </image>
+  <image id="152" name="image235.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="751.04" ytl="151.33" xbr="804.89" ybr="249.88" z_order="0">
+    </box>
+  </image>
+  <image id="153" name="image236.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="1051.20" ytl="175.70" xbr="1077.20" ybr="237.83" z_order="0">
+    </box>
+  </image>
+  <image id="154" name="image237.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="985.40" ytl="175.40" xbr="1011.59" ybr="230.39" z_order="0">
+    </box>
+  </image>
+  <image id="155" name="image238.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="1036.10" ytl="96.10" xbr="1064.41" ybr="146.84" z_order="0">
+    </box>
+  </image>
+  <image id="156" name="image24.jpg" width="1920" height="400">
+  </image>
+  <image id="157" name="image25.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="909.45" ytl="226.05" xbr="927.85" ybr="265.54" z_order="0">
+    </box>
+  </image>
+  <image id="158" name="image26.jpg" width="1920" height="400">
+  </image>
+  <image id="159" name="image27.jpg" width="1920" height="400">
+  </image>
+  <image id="160" name="image28.jpg" width="1920" height="400">
+  </image>
+  <image id="161" name="image29.jpg" width="1920" height="400">
+  </image>
+  <image id="162" name="image3.jpg" width="1920" height="400">
+  </image>
+  <image id="163" name="image30.jpg" width="1920" height="400">
+  </image>
+  <image id="164" name="image31.jpg" width="1920" height="400">
+  </image>
+  <image id="165" name="image32.jpg" width="1920" height="400">
+  </image>
+  <image id="166" name="image33.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="989.00" ytl="178.70" xbr="1047.93" ybr="291.14" z_order="0">
+    </box>
+  </image>
+  <image id="167" name="image34.jpg" width="1920" height="400">
+  </image>
+  <image id="168" name="image35.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="812.91" ytl="238.84" xbr="837.74" ybr="300.23" z_order="0">
+    </box>
+  </image>
+  <image id="169" name="image36.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="1026.76" ytl="184.45" xbr="1044.54" ybr="232.92" z_order="0">
+    </box>
+  </image>
+  <image id="170" name="image37.jpg" width="1920" height="400">
+  </image>
+  <image id="171" name="image38.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="701.14" ytl="48.18" xbr="777.13" ybr="269.97" z_order="0">
+    </box>
+  </image>
+  <image id="172" name="image39.jpg" width="1920" height="400">
+  </image>
+  <image id="173" name="image4.jpg" width="1920" height="400">
+  </image>
+  <image id="174" name="image40.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="831.17" ytl="181.20" xbr="902.80" ybr="324.47" z_order="0">
+    </box>
+  </image>
+  <image id="175" name="image41.jpg" width="1920" height="400">
+  </image>
+  <image id="176" name="image42.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="993.32" ytl="227.43" xbr="1016.48" ybr="279.12" z_order="0">
+    </box>
+  </image>
+  <image id="177" name="image43.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="866.23" ytl="163.34" xbr="924.39" ybr="272.12" z_order="0">
+    </box>
+  </image>
+  <image id="178" name="image44.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="750.49" ytl="121.88" xbr="805.39" ybr="265.19" z_order="0">
+    </box>
+  </image>
+  <image id="179" name="image45.jpg" width="1920" height="400">
+  </image>
+  <image id="180" name="image46.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="871.82" ytl="144.60" xbr="927.66" ybr="270.98" z_order="0">
+    </box>
+  </image>
+  <image id="181" name="image47.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="981.31" ytl="147.08" xbr="1058.32" ybr="258.01" z_order="0">
+    </box>
+  </image>
+  <image id="182" name="image48.jpg" width="1920" height="400">
+  </image>
+  <image id="183" name="image49.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="906.67" ytl="213.06" xbr="926.93" ybr="259.19" z_order="0">
+    </box>
+  </image>
+  <image id="184" name="image5.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="957.78" ytl="113.40" xbr="990.63" ybr="158.06" z_order="0">
+    </box>
+  </image>
+  <image id="185" name="image50.jpg" width="1920" height="400">
+  </image>
+  <image id="186" name="image51.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="908.04" ytl="202.21" xbr="924.66" ybr="240.64" z_order="0">
+    </box>
+  </image>
+  <image id="187" name="image52.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="899.94" ytl="208.03" xbr="916.17" ybr="248.70" z_order="0">
+    </box>
+  </image>
+  <image id="188" name="image53.jpg" width="1920" height="400">
+  </image>
+  <image id="189" name="image54.jpg" width="1920" height="400">
+  </image>
+  <image id="190" name="image55.jpg" width="1920" height="400">
+  </image>
+  <image id="191" name="image56.jpg" width="1920" height="400">
+  </image>
+  <image id="192" name="image57.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="996.29" ytl="222.06" xbr="1019.23" ybr="277.68" z_order="0">
+    </box>
+  </image>
+  <image id="193" name="image58.jpg" width="1920" height="400">
+  </image>
+  <image id="194" name="image59.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="1003.82" ytl="216.91" xbr="1028.49" ybr="270.58" z_order="0">
+    </box>
+  </image>
+  <image id="195" name="image6.jpg" width="1920" height="400">
+  </image>
+  <image id="196" name="image60.jpg" width="1920" height="400">
+  </image>
+  <image id="197" name="image61.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="911.81" ytl="217.26" xbr="932.55" ybr="249.74" z_order="0">
+    </box>
+  </image>
+  <image id="198" name="image62.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="936.88" ytl="220.97" xbr="950.19" ybr="253.81" z_order="0">
+    </box>
+  </image>
+  <image id="199" name="image63.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="1023.00" ytl="195.16" xbr="1067.30" ybr="268.30" z_order="0">
+    </box>
+  </image>
+  <image id="200" name="image64.jpg" width="1920" height="400">
+  </image>
+  <image id="201" name="image65.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="905.70" ytl="207.00" xbr="952.50" ybr="294.30" z_order="0">
+    </box>
+  </image>
+  <image id="202" name="image66.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="1491.05" ytl="0.00" xbr="1629.13" ybr="81.44" z_order="0">
+    </box>
+  </image>
+  <image id="203" name="image67.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="921.77" ytl="192.50" xbr="958.80" ybr="284.72" z_order="0">
+    </box>
+  </image>
+  <image id="204" name="image68.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="1006.81" ytl="190.50" xbr="1045.63" ybr="281.87" z_order="0">
+    </box>
+  </image>
+  <image id="205" name="image69.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="751.05" ytl="182.60" xbr="789.75" ybr="288.20" z_order="0">
+    </box>
+  </image>
+  <image id="206" name="image7.jpg" width="1920" height="400">
+  </image>
+  <image id="207" name="image70.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="858.73" ytl="193.48" xbr="920.13" ybr="288.42" z_order="0">
+    </box>
+  </image>
+  <image id="208" name="image71.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="987.34" ytl="184.54" xbr="1018.70" ybr="272.13" z_order="0">
+    </box>
+  </image>
+  <image id="209" name="image72.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="833.85" ytl="179.85" xbr="890.18" ybr="296.38" z_order="0">
+    </box>
+  </image>
+  <image id="210" name="image73.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="1055.03" ytl="118.72" xbr="1073.44" ybr="161.02" z_order="0">
+    </box>
+  </image>
+  <image id="211" name="image74.jpg" width="1920" height="400">
+  </image>
+  <image id="212" name="image75.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="1053.75" ytl="176.84" xbr="1118.24" ybr="328.19" z_order="0">
+    </box>
+  </image>
+  <image id="213" name="image76.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="1205.10" ytl="136.42" xbr="1268.74" ybr="283.91" z_order="0">
+    </box>
+  </image>
+  <image id="214" name="image77.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="770.39" ytl="191.03" xbr="828.05" ybr="316.15" z_order="0">
+    </box>
+  </image>
+  <image id="215" name="image78.jpg" width="1920" height="400">
+  </image>
+  <image id="216" name="image79.jpg" width="1920" height="400">
+  </image>
+  <image id="217" name="image8.jpg" width="1920" height="400">
+  </image>
+  <image id="218" name="image80.jpg" width="1920" height="400">
+  </image>
+  <image id="219" name="image81.jpg" width="1920" height="400">
+  </image>
+  <image id="220" name="image82.jpg" width="1920" height="400">
+  </image>
+  <image id="221" name="image83.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="980.09" ytl="79.70" xbr="1076.00" ybr="270.60" z_order="0">
+    </box>
+  </image>
+  <image id="222" name="image84.jpg" width="1920" height="400">
+  </image>
+  <image id="223" name="image85.jpg" width="1920" height="400">
+  </image>
+  <image id="224" name="image86.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="964.30" ytl="214.17" xbr="978.50" ybr="260.71" z_order="0">
+    </box>
+  </image>
+  <image id="225" name="image87.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="1215.10" ytl="144.80" xbr="1236.05" ybr="171.40" z_order="0">
+    </box>
+  </image>
+  <image id="226" name="image88.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="833.70" ytl="236.84" xbr="851.96" ybr="280.44" z_order="0">
+    </box>
+  </image>
+  <image id="227" name="image89.jpg" width="1920" height="400">
+  </image>
+  <image id="228" name="image9.jpg" width="1920" height="400">
+  </image>
+  <image id="229" name="image90.jpg" width="1920" height="400">
+  </image>
+  <image id="230" name="image91.jpg" width="1920" height="400">
+  </image>
+  <image id="231" name="image92.jpg" width="1920" height="400">
+  </image>
+  <image id="232" name="image93.jpg" width="1920" height="400">
+  </image>
+  <image id="233" name="image94.jpg" width="1920" height="400">
+  </image>
+  <image id="234" name="image95.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="983.30" ytl="299.80" xbr="1005.40" ybr="352.40" z_order="0">
+    </box>
+  </image>
+  <image id="235" name="image96.jpg" width="1920" height="400">
+  </image>
+  <image id="236" name="image97.jpg" width="1920" height="400">
+    <box label="Enemy" source="manual" occluded="0" xtl="938.81" ytl="166.99" xbr="962.46" ybr="240.09" z_order="0">
+    </box>
+  </image>
+  <image id="237" name="image98.jpg" width="1920" height="400">
+  </image>
+  <image id="238" name="image99.jpg" width="1920" height="400">
+  </image>
+</annotations>
