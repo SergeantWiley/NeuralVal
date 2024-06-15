@@ -7,6 +7,7 @@ from PIL import Image
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 device = ('cpu')
 print("Using Device:", device)
+
 class MaskImagesDataset(Dataset):
     def __init__(self, csv_file, root_dir, transform=None):
         self.annotations = pd.read_csv(csv_file)
@@ -15,7 +16,6 @@ class MaskImagesDataset(Dataset):
 
     def __len__(self):
         return len(self.annotations)
-
     def __getitem__(self, idx):
         img_name = os.path.join(self.root_dir, self.annotations.iloc[idx, 0])
         image = Image.open(img_name).convert("L")  # Convert image to grayscale
@@ -36,6 +36,7 @@ transform = transforms.Compose([
 # Create the dataset
 dataset = MaskImagesDataset(csv_file='annotations.csv', root_dir='MaskImages', transform=transform)
 dataloader = DataLoader(dataset, batch_size=4, shuffle=True, num_workers=0)
+
 print("Dataset Created")
 import torch.nn as nn
 import torch.nn.functional as F

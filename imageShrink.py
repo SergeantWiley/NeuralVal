@@ -5,16 +5,13 @@ def crop_center(image, crop_width, crop_height):
     # Get the dimensions of the image
     height, width, _ = image.shape
 
-    # Calculate the center of the image
     center_x, center_y = width // 2, height // 2
 
-    # Calculate the coordinates for the cropping rectangle
     x1 = center_x - crop_width // 2
     x2 = center_x + crop_width // 2
     y1 = center_y - crop_height // 2
     y2 = center_y + crop_height // 2
 
-    # Crop the image
     cropped_image = image[y1:y2, x1:x2]
     return cropped_image
 
@@ -23,7 +20,6 @@ def process_images(input_dir, output_dir, crop_size):
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
-    # Iterate over all files in the input directory
     for filename in os.listdir(input_dir):
         if filename.endswith(('.png', '.jpg', '.jpeg')):
             image_path = os.path.join(input_dir, filename)
@@ -34,7 +30,6 @@ def process_images(input_dir, output_dir, crop_size):
                 print(f"Error: Could not read the image {filename}.")
                 continue
 
-            # Crop the center of the image
             cropped_image = crop_center(image, crop_size[0], crop_size[1])
 
             # Save the cropped image to the output directory

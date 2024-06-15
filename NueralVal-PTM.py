@@ -37,7 +37,7 @@ dataset = NueralVal(img_dir='MaskImages',
                             annotations_file='annotations.csv', 
                             transform=transform)
 
-train_loader = DataLoader(dataset, batch_size=32, shuffle=False, collate_fn=lambda x: tuple(zip(*x)))
+train_loader = DataLoader(dataset, batch_size=8, shuffle=False, collate_fn=lambda x: tuple(zip(*x)))
 
 model = fasterrcnn_resnet50_fpn(pretrained=True)
 num_classes = 2  # 1 class (serial number) + background
@@ -57,32 +57,33 @@ model.to(device)
 optimizer = optim.Adam(model.parameters(), lr=0.001)
 # Training loop
 num_epochs = 10
+def train(train=True):
+    if train:
+        for epoch in range(num_epochs):
+            model.train()
+            epoch_loss = 0
+            for images, targets in train_loader:
+                images = list(image.to(device) for image in images)
+                print("Images to tensor")
+                targets = [{k: v.to(device) for k, v in t.items()} for t in targets]
+                print("Targets to tensor")
+                optimizer.zero_grad()
+                print("Optimizer set")
+                loss_dict = model(images, targets)
+                print("Losses found")
+                losses = sum(loss for loss in loss_dict.values())
+                print("Losses compiled and calculated")
+                losses.backward()
+                print("Backward Propagation Completed")
+                optimizer.step()
+                print("Going to next step")
+                epoch_loss += losses.item()
 
-# for epoch in range(num_epochs):
-#     model.train()
-#     epoch_loss = 0
-#     for images, targets in train_loader:
-#         images = list(image.to(device) for image in images)
-#         print("Images to tensor")
-#         targets = [{k: v.to(device) for k, v in t.items()} for t in targets]
-#         print("Targets to tensor")
-#         optimizer.zero_grad()
-#         print("Optimizer set")
-#         loss_dict = model(images, targets)
-#         print("Losses found")
-#         losses = sum(loss for loss in loss_dict.values())
-#         print("Losses compiled and calculated")
-#         losses.backward()
-#         print("Backward Propagation Completed")
-#         optimizer.step()
-#         print("Going to next step")
-#         epoch_loss += losses.item()
+            print(f'Epoch {epoch+1}, Loss: {epoch_loss/len(train_loader)}')
+        model_save_path = "fasterrcnn_model.pth"
+        torch.save(model.state_dict(), model_save_path)
 
-#     print(f'Epoch {epoch+1}, Loss: {epoch_loss/len(train_loader)}')
-#model_save_path = "fasterrcnn_model.pth"
-#torch.save(model.state_dict(), model_save_path)
-
-
+train(False)
 model_load_path = "fasterrcnn_model.pth"
 model.load_state_dict(torch.load(model_load_path))
 model.eval()  # Set the model to evaluation mode
@@ -91,18 +92,17 @@ import cv2
 import matplotlib.pyplot as plt
 from torchvision.transforms import functional as F
 import numpy as np
-def draw_bounding_boxes(image, predictions, threshold=0.005):
+def draw_bounding_boxes(image, predictions, threshold=0.05):
     # Convert the image from a tensor to a NumPy array and transpose the dimensions
     image = image.cpu().numpy().transpose(1, 2, 0)
     image = (image * 255).astype(np.uint8)  # Convert to uint8
-
     # Print all bounding box details for debugging
     print("All bounding boxes and scores:")
     for i, (box, score) in enumerate(zip(predictions['boxes'], predictions['scores'])):
         x_min, y_min, x_max, y_max = box.float
         ().cpu().numpy()
         print(f'Box {i}: ({x_min}, {y_min}), ({x_max}, {y_max}), Score: {score.item()}')
-    
+
     # Loop over the predictions and draw the bounding boxes
     for i, box in enumerate(predictions['boxes']):
         score = predictions['scores'][i].item()

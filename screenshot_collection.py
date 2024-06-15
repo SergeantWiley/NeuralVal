@@ -1,28 +1,36 @@
 import os
 import time
+
 from pynput import mouse, keyboard
 from PIL import ImageGrab
+import threading
 
 # Ensure the directory exists
-output_dir = 'dataset/RawImages'
+output_dir = 'RawImages'
 os.makedirs(output_dir, exist_ok=True)
-press = 0
+press = 239
 taking_screenshots = False
+
+def take_screenshot():
+    global press
+    # Capture the screen
+    screenshot = ImageGrab.grab()
+    # Create a unique filename
+    filename = os.path.join(output_dir, f'image{press}.jpg')
+    press += 1
+    # Save the screenshot
+    screenshot.save(filename)
+    print(f'Screenshot saved: {press}')
+
 def on_click(x, y, button, pressed):
     global press
     # Take action on mouse button release
     if taking_screenshots and button == mouse.Button.left and not pressed:
-        # Capture the screen
-        screenshot = ImageGrab.grab()
-        # Create a unique filename
-        #timestamp = time.strftime('%Y%m%d_%H%M%S')
-        filename = os.path.join(output_dir, f'image{press}.png')
-        press += 1
-        # Save the screenshot
-        screenshot.save(filename)
-        print([f'Screenshot saved: {press}'])
+        # Start a new thread to take a screenshot
+        screenshot_thread = threading.Thread(target=take_screenshot)
+        screenshot_thread.start()
 
-# Set up the listener]
+# Set up the listener
 def on_press(key):
     global taking_screenshots
     try:
@@ -33,7 +41,6 @@ def on_press(key):
             taking_screenshots = False
             print('Stopped taking screenshots')
     except AttributeError:
-        # Handle special keys
         pass
 
 # Set up the listeners
@@ -45,4 +52,3 @@ keyboard_listener.start()
 mouse_listener.start()
 keyboard_listener.join()
 mouse_listener.join()
-
