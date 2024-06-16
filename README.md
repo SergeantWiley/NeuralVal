@@ -199,6 +199,7 @@ input_dir = 'FOVImages'
 output_dir = 'MaskImages'
 ```
 The most important is the lower_red and the upper_red. These dictate what counts as "red" and what doesn't count as "red". Anyone can say the enemies are clearly red but so is the gun and is the combat report in the images above. In matter a fact, everything in the image has some red so exactly classifying what red is cant be done with on value so a range is dictated. That range looks like this:
+
 ![image](https://github.com/SergeantWiley/NeuralVal/assets/86330761/30c12600-e622-431d-b4e5-481446af2e5f)
 
 Through this proccess, anything that falls within this range is consider "red" and anything outside this range is consider not "red". Of course these values can be adjusted depending on what the needs are. But we will discover this range isn't what we want exactly. 
