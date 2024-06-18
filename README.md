@@ -97,59 +97,7 @@ Right now the data is raw format and a lot of impurities and a lot of containime
 
 This is an example of raw mined data
 
-![image12](https://github.com/SergeantWiley/NeuralVal/assets/86330761/cea683a3-53f3-4e0a-843f-0ab83152afab)
-
-There is quite a lot of useless information for object detection. For example, the mini map isnt needed, the buttom abilities arent needed, the combat report, or any GUI so the best method would to cut the image to a FOV
-
-```python
-def crop_center(image, crop_width, crop_height):
-    # Get the dimensions of the image
-    height, width, _ = image.shape
-
-    center_x, center_y = width // 2, height // 2
-
-    x1 = center_x - crop_width // 2
-    x2 = center_x + crop_width // 2
-    y1 = center_y - crop_height // 2
-    y2 = center_y + crop_height // 2
-
-    # Crop the image
-    cropped_image = image[y1:y2, x1:x2]
-    return cropped_image
-
-def process_images(input_dir, output_dir, crop_size):
-    # Ensure the output directory exists
-    if not os.path.exists(output_dir):
-        os.makedirs(output_dir)
-
-    # Iterate over all files in the input directory
-    for filename in os.listdir(input_dir):
-        if filename.endswith(('.png', '.jpg', '.jpeg')):
-            image_path = os.path.join(input_dir, filename)
-            image = cv2.imread(image_path)
-
-            # Check if the image was loaded properly
-            if image is None:
-                print(f"Error: Could not read the image {filename}.")
-                continue
-
-            # Crop the center of the image
-            cropped_image = crop_center(image, crop_size[0], crop_size[1])
-
-            # Save the cropped image to the output directory
-            output_path = os.path.join(output_dir, filename)
-            cv2.imwrite(output_path, cropped_image)
-            print(f"Cropped image saved to {output_path}")
-
-# Example usage
-input_directory = 'RawImages'
-output_directory = 'FOVImages'
-crop_size = (1920, 400)  # Width x Height of the crop region
-process_images(input_directory, output_directory, crop_size)
-```
-Playes are most commonly looking at the front for the enemy thus they are likely to be viewed near the middle rows of the image, the bottom can be cut off and the top can be cut off. Using the crop_size, we can choose what the end shape would look like. This is important that this FOV stays conistent
-
-![image12](https://github.com/SergeantWiley/NeuralVal/assets/86330761/b5ba8515-e8f1-48b6-b6ad-c36818077139)
+![image108](https://github.com/SergeantWiley/NeuralVal/assets/86330761/9cc36147-da17-496c-815c-6619cccfc9f7)
 
 Of course further refining can be done but for now, we will stick with this before moving to the next part. The next part is masking. Like before, there is a lot of code that ensures it goes from RGB to only black and white with a little bit of contrast. 
 
@@ -204,11 +152,11 @@ The most important is the lower_red and the upper_red. These dictate what counts
 
 Through this proccess, anything that falls within this range is consider "red" and anything outside this range is consider not "red". Of course these values can be adjusted depending on what the needs are. But we will discover this range isn't what we want exactly. 
 
-![image12](https://github.com/SergeantWiley/NeuralVal/assets/86330761/11e6e79b-efe1-476b-8648-e8323b0418ca)
+![image108](https://github.com/SergeantWiley/NeuralVal/assets/86330761/8856a14e-410b-4a4f-8671-9d3b2cc7815a)
 
 We have removed quite a lot of things but also added some odd looking shapes but that can be taken to our advantage. Our model doesn't need to learn the colors, rather we want it to learn the shape and the area within and if we zoom in to the enemy, we find some interesting traits
 
-![image](https://github.com/SergeantWiley/NeuralVal/assets/86330761/1e0f1fcf-8932-4588-811f-e017fbb07daf)
+![image](https://github.com/SergeantWiley/NeuralVal/assets/86330761/f87d7967-fffe-41c4-b065-2e397db7a781)
 
 With some basic observation, the highest resolution is the legs and the thighs. In matter a fact, during Data Annotation which will be discussed next, the characters can actually be defined by the legs and thighs *Writer's Note: This was only discovered after annotating the data*
 
@@ -218,7 +166,7 @@ This takes us to our final Data Refining proccess and often the most time consum
 
 This task is so long and extensive, there is an entire job industry for it. Data annotating in object detect is often done by drawing bounding boxes using a data annotating tool. Many tools are free and are great for many objectives. [CVAT.AI](https://www.cvat.ai/) was used in the data annotating proccess.
 
-The most common and simplisted annotation for object detection is a bounding box as it has only 6 total columns: `Images, xmin, xmax, ymin, ymax, label`.
+The most common and simplist annotation for object detection is a bounding box as it has only 6 total columns: `Images, xmin, xmax, ymin, ymax, label`.
 
 ![image](https://github.com/SergeantWiley/NeuralVal/assets/86330761/5dc9bc85-368b-45f6-8122-0e9eea2b6f50)
 
@@ -256,7 +204,7 @@ print(f"Annotations successfully exported to {output_csv_file}")
 
 # Data Importing
 
-Unlike ChessNet, a nueral network architecture wont be defined, rather a custom dataset called NeuralVal
+Unlike ChessNet, a nueral network architecture wont be defined, rather a custom dataset called NeuralVal as we will be using a Pretrained Model called FasterNet Version 50
 ```python
 class NueralVal(Dataset):
     def __init__(self, img_dir, annotations_file, transform=None):
@@ -277,5 +225,23 @@ class NueralVal(Dataset):
             image = self.transform(image)
         target = {'boxes': boxes, 'labels': labels}
         return image, target
+```
+At the start of the class, we declared the image director, annotations, and any optional transformations. 
+
+```python
+def __init__(self, img_dir, annotations_file, transform=None):
+        self.img_dir = img_dir
+        self.annotations = pd.read_csv(annotations_file)
+        self.transform = transform
+```
+The get item is used in all custom dataset as it formats the data in the same way torch wants it. Specifcally torchvision. We start by creating the img path then load all images using Pillow. For the boxes, we can index the columns 1 through 5 inside the annotations file. We dont have any labels so we will stick with 0. Finally, we create a target which contains the boxes and the labels. 
+
+```python
+img_path = os.path.join(self.img_dir, self.annotations.iloc[idx, 0])
+image = Image.open(img_path).convert("RGB")
+boxes = self.annotations.iloc[idx, 1:5].values.astype('float').reshape(-1, 4)
+boxes = torch.as_tensor(boxes, dtype=torch.float32)
+labels = torch.ones((boxes.shape[0],), dtype=torch.int64)
+target = {'boxes': boxes, 'labels': labels}
 ```
 
