@@ -245,3 +245,13 @@ labels = torch.ones((boxes.shape[0],), dtype=torch.int64)
 target = {'boxes': boxes, 'labels': labels}
 ```
 
+With this dataset, we can then pass it into the pretrained model. The reason for a pretrained over a untrained is due to a couple of advantages. One mainly is the lower computation power needed over the computation power needed for a empty model. A few more reasons below:
+
+* Starting somewhere instead of nowhere: Our pretrained may not be exactly what we want but we can finetune the model to meet our needs
+
+* Low computation: A pretrained doesnt need memory at the level of an empty model. For instance, using a pretrained needed around 7GB of RAM while a empty model needed 52GB of RAM
+
+* Built in optimization: Pretrained models have been developed and managed over time allowing for models to become more optimized.
+
+While this may seem a promising choice, it does still require extensive computation power. For instance, a RTX 3070 ran for 5 hours to get a confidence of 86 percent but the advantage is in the memory demand. It only demanded 7GB over the 52GB
+
