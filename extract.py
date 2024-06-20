@@ -5,7 +5,6 @@ import csv
 input_xml_file = 'annotations.xml'
 output_csv_file = 'annotations.csv'
 
-# Parse the XML file
 tree = ET.parse(input_xml_file)
 root = tree.getroot()
 

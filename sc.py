@@ -8,25 +8,20 @@ import threading
 # Ensure the directory exists
 output_dir = 'RawImages'
 os.makedirs(output_dir, exist_ok=True)
-press = 0
+press = 600
 taking_screenshots = False
 
 def take_screenshot():
     global press
-    # Capture the screen
     screenshot = ImageGrab.grab()
-    # Create a unique filename
     filename = os.path.join(output_dir, f'image{press}.jpg')
     press += 1
-    # Save the screenshot
     screenshot.save(filename)
     print(f'Screenshot saved: {press}')
 
 def on_click(x, y, button, pressed):
     global press
-    # Take action on mouse button release
     if taking_screenshots and button == mouse.Button.left and not pressed:
-        # Start a new thread to take a screenshot
         screenshot_thread = threading.Thread(target=take_screenshot)
         screenshot_thread.start()
 
