@@ -245,13 +245,92 @@ labels = torch.ones((boxes.shape[0],), dtype=torch.int64)
 target = {'boxes': boxes, 'labels': labels}
 ```
 
-With this dataset, we can then pass it into the pretrained model. The reason for a pretrained over a untrained is due to a couple of advantages. One mainly is the lower computation power needed over the computation power needed for a empty model. A few more reasons below:
+As mentioned before, a Pretrained Model will be used over a raw architecture. This has many benifits
 
-* Starting somewhere instead of nowhere: Our pretrained may not be exactly what we want but we can finetune the model to meet our needs
+* Lower Computation required: Since wieghts are already established, they are already close to what we desire instead of starting at 0
+* Automatic Tensor size adjustment: FasterR-CNN was designed to be as flexable as possible thus transformations are not needed
+* Optimized: FasterR-CNN has its optimizations already prebuilt so architecture doesnt need to be modified for object detection. This also allows for faster detection and loading.
 
-* Low computation: A pretrained doesnt need memory at the level of an empty model. For instance, using a pretrained needed around 7GB of RAM while a empty model needed 52GB of RAM
+So most of the code for architecture is just defining each part from the pretrained model.
+```python
+dataset = NueralVal(img_dir='MaskImages', 
+                            annotations_file='annotations.csv', 
+                            transform=transform)
+train_loader = DataLoader(dataset, batch_size=8, shuffle=False, collate_fn=lambda x: tuple(zip(*x)))
 
-* Built in optimization: Pretrained models have been developed and managed over time allowing for models to become more optimized.
+device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 
-While this may seem a promising choice, it does still require extensive computation power. For instance, a RTX 3070 ran for 5 hours to get a confidence of 86 percent but the advantage is in the memory demand. It only demanded 7GB over the 52GB
+# Model setup
+model = fasterrcnn_resnet50_fpn(pretrained=True)
+num_classes = 2  # 1 class (serial number) + background
+in_features = model.roi_heads.box_predictor.cls_score.in_features
+model.roi_heads.box_predictor = torchvision.models.detection.faster_rcnn.FastRCNNPredictor(in_features, num_classes)
+model.to(device)
+```
+Seems like a lot but most is standard and thus can be copied and pasted. The most important things to note though is the dataset and the train_loader. Its important to note NeuralVal isnt specifcally an AI, rather its a dataset. So we call NueralVal to created our custom dataset over call it to create a model. Our model is modifed based on the FasterR-CNN model so it becomes fine tuned to fit our dataset.
 
+*Writers Note: FasterR-CNN is going through some revisions and updates thus this line might raise a warning. As of now, it does not cause an error but might change in the future.*
+```puthon
+# Model setup
+model = fasterrcnn_resnet50_fpn(pretrained=True)
+```
+*Just something to keep in mind*
+
+Finally for the training. Since images are really large, this might be extremely computationally extensive for both the CPU and GPU. So its important to note the specs this model is training on:
+CUDA CORES: 5888, Tensor Cores: 184, 8GB VRAM and its using 100% of the GPU so do not put this on your CPU. Placing it on the CPU used 63GB of memory and used 97% of a i-9
+
+To ensure this model and be safely trained on your machine, you should have at least a RTX 3060 (No AMD GPUs) and at least 16GB. With that out the way, the code is below. 
+
+After setting the optimizer and the number of epochs, the training loop contains status and progress indicators as the training time is very long so it contains 2 main sections. 
+```python
+optimizer = optim.Adam(model.parameters(), lr=0.001)
+# Training loop
+num_epochs = 10
+def train(train=True):
+    if train:
+        total_iterations = num_epochs * len(train_loader)
+        progress = 0
+        current_iteration = 0
+        start_time = time.time()
+        for epoch in range(num_epochs):
+            model.train()
+            epoch_loss = 0
+            for images, targets in train_loader:
+                iter_start_time = time.time() #Log the start time
+                #Training
+                images = list(image.to(device) for image in images)
+                targets = [{k: v.to(device) for k, v in t.items()} for t in targets]
+                optimizer.zero_grad()
+                loss_dict = model(images, targets)
+                losses = sum(loss for loss in loss_dict.values())
+                losses.backward()
+                optimizer.step()
+                epoch_loss += losses.item()
+                current_iteration += 1
+
+                #Progress Management
+                progress = current_iteration / total_iterations
+                iter_end_time = time.time()  # Log the end time
+                time_passed = iter_end_time - iter_start_time
+                elapsed_time = time.time() - start_time
+                avg_time_per_iteration = elapsed_time / current_iteration
+                time_left = round(((total_iterations - current_iteration) * avg_time_per_iteration) / 60, 2)
+                
+                print(f"Iteration {current_iteration}/{total_iterations} ({round(progress*100,2)}%), Current epoch Loss: {epoch_loss}, ETA: {time_left} min")
+
+            print(f'Epoch {epoch+1}, Loss: {epoch_loss/len(train_loader)}')
+
+        model_save_path = "fasterrcnn_model.pth"
+        torch.save(model.state_dict(), model_save_path)
+```
+First is the actual training code while the second one is the Progress Managment. This is a good time to explain the actual structure of the training loop. First is the Epoch. Within each of these epochs are the iteration. The main measurement for the model progress is not the epoch, rather the iteration. The number of iterations can be found by multiplying the number of epochs by the length of the dataset. 
+```python
+total_iterations = num_epochs * len(train_loader)
+```
+Each iteration prints out the progress
+```python
+print(f"Iteration {current_iteration}/{total_iterations} ({round(progress*100,2)}%), Current epoch Loss: {epoch_loss}, ETA: {time_left} min")
+```
+`Example Output: Iteration 128/450 (28.44%), Current epoch Loss: 4.959144316613674, ETA: 119.37 min`
+
+The output is highly useful containing a progress percentage, a current iteration loss, and a ETA when it will be finished. Note that the ETA is fine tuned during training rather calculated before so it wont be 100% accurate rather it gives a idea in time of when it might finish. 
