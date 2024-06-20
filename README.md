@@ -245,6 +245,7 @@ labels = torch.ones((boxes.shape[0],), dtype=torch.int64)
 target = {'boxes': boxes, 'labels': labels}
 ```
 
+# Pretrained Models
 As mentioned before, a Pretrained Model will be used over a raw architecture. This has many benifits
 
 * Lower Computation required: Since wieghts are already established, they are already close to what we desire instead of starting at 0
@@ -334,3 +335,19 @@ print(f"Iteration {current_iteration}/{total_iterations} ({round(progress*100,2)
 `Example Output: Iteration 128/450 (28.44%), Current epoch Loss: 4.959144316613674, ETA: 119.37 min`
 
 The output is highly useful containing a progress percentage, a current iteration loss, and a ETA when it will be finished. Note that the ETA is fine tuned during training rather calculated before so it wont be 100% accurate rather it gives a idea in time of when it might finish. 
+
+To add flexibility, the training loop was placed into a function where the code only runs when training is set to True
+```python
+train(True)
+```
+Once the model is done training, it saves the model
+```python
+model_save_path = "fasterrcnn_model.pth"
+        torch.save(model.state_dict(), model_save_path)
+```
+To load it
+```python
+model_load_path = "fasterrcnn_model2.pth"
+model.load_state_dict(torch.load(model_load_path))
+model.eval()  # Set the model to evaluation mode
+```
