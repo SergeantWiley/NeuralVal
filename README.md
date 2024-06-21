@@ -353,5 +353,11 @@ model.eval()  # Set the model to evaluation mode
 ```
 # Post Training
 
-After training, we can pass an never seen images into the PostTraining.py script. This script is designed so that instead of having to create a mask and then upload it, we can upload the raw image and it converts it to a mask and displays it on the original image. The model shows promising results however it can still be taught a bit more
+After training, we can pass an never seen images into the PostTraining.py script. This script is designed so that instead of having to create a mask and then upload it, we can upload the raw image and it converts it to a mask and displays it on the original image. The model shows promising results however it can still be taught a bit more.
+![Figure_1](https://github.com/SergeantWiley/NeuralVal/assets/86330761/650bbb48-b8de-4162-a3ec-cefe433f3a45) ![Figure_1](https://github.com/SergeantWiley/NeuralVal/assets/86330761/369168a1-e347-496f-aa6a-43462f5b4a82)
 
+Example Output of the first and second
+
+`First: Box Cords [940.71826 462.37067 961.55426 506.6017 ] Label 1 Score 0.3410597`
+
+`Second: Box Cords [946.3012 549.9988 974.7831 598.4661] Label 1 Score 0.783573`
