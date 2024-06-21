@@ -1,23 +1,16 @@
-#print("Loading Libraries")
 import os
-import pandas as pd
-from PIL import Image
-import torch
-from torch.utils.data import Dataset
-import torchvision.transforms as transforms
-from torch.utils.data import DataLoader
-import torchvision
-import torch.optim as optim
-from torchvision.models.detection import fasterrcnn_resnet50_fpn
-from torchvision.models.detection.faster_rcnn import FasterRCNN_ResNet50_FPN_Weights
-from torchvision.transforms import functional as F
 import time
-import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib.patches as patches
-import cv2
+import pandas as pd
+import torch
+from torch.utils.data import Dataset, DataLoader
+import torch.optim as optim
+from PIL import Image
+from torchvision import transforms
+import torchvision
+from torchvision.models.detection.faster_rcnn import fasterrcnn_resnet50_fpn, FastRCNNPredictor
+from torchvision.models.detection import FasterRCNN_ResNet50_FPN_Weights
 
-class NueralVal(Dataset):
+class NeuralVal(Dataset):
     def __init__(self, img_dir, annotations_file, transform=None):
         self.img_dir = img_dir
         self.annotations = pd.read_csv(annotations_file)
@@ -38,23 +31,33 @@ class NueralVal(Dataset):
         return image, target
 
 transform = transforms.Compose([
-    #transforms.Resize((224, 224)),
     transforms.ToTensor(),
 ])
-
-dataset = NueralVal(img_dir='MaskImages', 
+dataset = NeuralVal(img_dir='MaskImages', 
                             annotations_file='annotations.csv', 
                             transform=transform)
 train_loader = DataLoader(dataset, batch_size=8, shuffle=False, collate_fn=lambda x: tuple(zip(*x)))
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 
+# Model setup
 model = fasterrcnn_resnet50_fpn(weights=FasterRCNN_ResNet50_FPN_Weights.COCO_V1)
 num_classes = 2  # 1 class (serial number) + background
 in_features = model.roi_heads.box_predictor.cls_score.in_features
-model.roi_heads.box_predictor = torchvision.models.detection.faster_rcnn.FastRCNNPredictor(in_features, num_classes)
+model.roi_heads.box_predictor = FastRCNNPredictor(in_features, num_classes)
 model.to(device)
 
+# Load the saved model if it exists
+model_save_path = "fasterrcnn_model.pth"
+if os.path.exists(model_save_path):
+    print(f"Loading model from {model_save_path}")
+    model.load_state_dict(torch.load(model_save_path))
+else:
+    print(f"No saved model found at {model_save_path}. Starting training from scratch.")
+
+# Optimizer
 optimizer = optim.Adam(model.parameters(), lr=0.001)
+
+# Training loop
 num_epochs = 10
 def train(train=True):
     print("Training Started...")
@@ -68,7 +71,7 @@ def train(train=True):
             epoch_loss = 0
             for images, targets in train_loader:
                 iter_start_time = time.time() #Log the start time
-                #Training
+                # Training
                 images = list(image.to(device) for image in images)  
                 targets = [{k: v.to(device) for k, v in t.items()} for t in targets]
                 optimizer.zero_grad()
@@ -79,7 +82,7 @@ def train(train=True):
                 epoch_loss += losses.item()
                 current_iteration += 1
 
-                #Progress Management
+                # Progress Management
                 progress = current_iteration / total_iterations
                 iter_end_time = time.time()  # Log the end time
                 time_passed = iter_end_time - iter_start_time
@@ -91,7 +94,7 @@ def train(train=True):
 
             print(f'Epoch {epoch+1}, Loss: {epoch_loss/len(train_loader)}')
             
-        model_save_path = "fasterrcnn_model2.pth"
         torch.save(model.state_dict(), model_save_path)
+        print(f"Model saved to {model_save_path}")
 
-train(False)
+train()
