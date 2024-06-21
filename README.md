@@ -16,7 +16,7 @@ This is the general pipeline:
 * Annotating
 * Data Importing
 * Pretrained models
-* Terrifying GPU/CPU consumption
+* Post Training
 
 The hardest part of all this is the data refining as it requires an understanding of what we are trying to replicate. While ChessNet goes indepth into the refining proccess but thats nothing compared to Nueral Val. Let the fun begin
 
@@ -351,3 +351,7 @@ model_load_path = "fasterrcnn_model2.pth"
 model.load_state_dict(torch.load(model_load_path))
 model.eval()  # Set the model to evaluation mode
 ```
+# Post Training
+
+After training, we can pass an never seen images into the PostTraining.py script. This script is designed so that instead of having to create a mask and then upload it, we can upload the raw image and it converts it to a mask and displays it on the original image. The model shows promising results however it can still be taught a bit more
+
