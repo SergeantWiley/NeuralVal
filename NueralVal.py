@@ -8,15 +8,9 @@ from torch.utils.data import DataLoader
 import torchvision
 import torch.optim as optim
 from torchvision.models.detection import fasterrcnn_resnet50_fpn
-from torchvision.models.detection.faster_rcnn import fasterrcnn_resnet50_fpn, FastRCNNPredictor
+from torchvision.models.detection.faster_rcnn import fasterrcnn_resnet50_fpn
 from torchvision.models.detection.faster_rcnn import FasterRCNN_ResNet50_FPN_Weights
-from torchvision.transforms import functional as F
 import time
-import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib.patches as patches
-import cv2
-from NVUtilities import utilities
 class NueralVal(Dataset):
     def __init__(self, img_dir, annotations_file, transform=None):
         self.img_dir = img_dir
@@ -58,8 +52,11 @@ class modelArch:
         model.roi_heads.box_predictor = torchvision.models.detection.faster_rcnn.FastRCNNPredictor(in_features, num_classes)
         model.to(device)
         return model
-    def loadTrainedArch(model_load_path
+    def FineTundedArch(model_load_path
                         ,device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')):
+        '''
+        Used for retrain
+        '''
         model = modelArch.PreTrainedArch(model_load_path,device)
         if os.path.exists(model_load_path):
             print(f"Loading model from {model_load_path}")
@@ -101,14 +98,15 @@ class training:
                     time_left = round(((total_iterations - current_iteration) * avg_time_per_iteration) / 60, 2)
                     
                     print(f"Iteration {current_iteration}/{total_iterations} ({round(progress*100,2)}%), Current epoch Loss: {epoch_loss}, ETA: {time_left} min")
-
                 print(f'Epoch {epoch+1}, Loss: {epoch_loss/len(train_loader)}')
-                
+            elapsed_time = time.time() - start_time    
             torch.save(model.state_dict(), model_save_path)
             print(f"Model saved to {model_save_path}")
+            print("Model finished Training. Time Taken: ", round(elapsed_time / 60,2))
 
-dataset,train_loader = modelDataset.load_dataset('MaskImages','annotations.csv')
-model = modelArch.loadTrainedArch('fasterrcnn_model.pth')
-optimizer = optim.Adam(model.parameters(), lr=0.001)
-num_epochs = 10
-training.trainLoop(model,train_loader,optimizer,num_epochs,'fasterrcnn_model.pth',True)
+# Example Usage
+# dataset,train_loader = modelDataset.load_dataset('MaskImages','annotations.csv')
+# model = modelArch.FineTundedArch('fasterrcnn_model.pth')
+# optimizer = optim.Adam(model.parameters(), lr=0.001)
+# num_epochs = 10
+# training.trainLoop(model,train_loader,optimizer,num_epochs,'fasterrcnn_model.pth',True)
