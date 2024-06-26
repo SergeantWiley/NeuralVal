@@ -78,7 +78,9 @@ The example image is below
 ![image628](https://github.com/SergeantWiley/NeuralVal/assets/86330761/14214270-73e8-4a57-a407-8c339e1b2549)
 
 the lower and upper red are the min and max ranges for what colors will be masked. 
+
 ![image](https://github.com/SergeantWiley/NeuralVal/assets/86330761/30c12600-e622-431d-b4e5-481446af2e5f)
+
 Before training, images should be masked but if images do not wanted to be masked, but if its desirable that they dont, then set mask to False. An example of what the masked image looks like for both training and post training
 
 ![image628](https://github.com/SergeantWiley/NeuralVal/assets/86330761/a9709786-6bb3-4206-87dd-1c26289bbe5d)
