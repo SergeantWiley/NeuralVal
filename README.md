@@ -1,7 +1,7 @@
 
 # Neural Val
 
-A fast and easy small library for exploring or developing proof of concept machine leanring models. With flexibility and high modularity, it allows anyone to save hundreds of line of standarzied and common code and pass straight to data quality and annotating
+A fast and easy small library for exploring or developing proof of concept machine learning models. With flexibility and high modularity, it allows anyone to save hundreds of line of standarzied and common code and pass straight to data quality and annotating
 
 ## Install
 
@@ -34,7 +34,7 @@ For annotating, CVAT.AI was used and the code was customized for CVAT annotation
 
 `image_name,xmin,ymin,xmax,ymax,Label`
 
-This format is required for the Neural Val custom dataset class to works. To load such a dataset, use the code
+This format is required for the Neural Val custom dataset class to work. To load such a dataset, use the code
 
 ```python
 dataset,train_loader = modelDataset.load_dataset('MaskImages','annotations.csv')
@@ -46,9 +46,9 @@ If the model is not being fine tuned after prior training, then use
 model = modelArch.PreTrainedArch(GPU=True)
 ```
 
-GPU by defualt is enabled but if its not avaliable then it will automatically switch. To force CPU usage, set GPU to False. 
+GPU by defualt is enabled but if its not avaliable then it will automatically switch to CPU. To force CPU usage, set GPU to False. 
 
-If a model is already fine tuned from a PreTrainedArch such as FasterRCNN then it can be loaded for fine tuning to reduce training time by using
+If a model is already fine tuned from a PreTrainedArch such as FasterRCNN then it can be loaded for additional fine tuning to reduce training time by using
 
 ```python
 model = modelArch.FineTundedArch('fasterrcnn_model.pth',GPU=True)
@@ -81,7 +81,7 @@ the lower and upper red are the min and max ranges for what colors will be maske
 
 ![image](https://github.com/SergeantWiley/NeuralVal/assets/86330761/30c12600-e622-431d-b4e5-481446af2e5f)
 
-Before training, images should be masked but if images do not wanted to be masked, but if its desirable that they dont, then set mask to False. An example of what the masked image looks like for both training and post training
+Before training, images should be masked but if its desirable that they dont, then set mask to False. An example of what the masked image looks like for both training and post training
 
 ![image628](https://github.com/SergeantWiley/NeuralVal/assets/86330761/a9709786-6bb3-4206-87dd-1c26289bbe5d)
 
