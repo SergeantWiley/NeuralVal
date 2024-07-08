@@ -12,15 +12,15 @@ import cv2
 
 class utilities:
     class preTrain:
-        def red_mask_intensity(image_path, output_dir):
+        def red_mask_intensity(image_path, output_dir,lower_red = [100, 0, 0], upper_red = [255, 100, 100]):
             # Read the original image
             image = cv2.imread(image_path)
             if image is None:
                 print(f"Error: Could not read the image {image_path}.")
                 return
             image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-            lower_red = np.array([100, 0, 0])
-            upper_red = np.array([255, 100, 100])
+            lower_red = np.array(lower_red)
+            upper_red = np.array(upper_red)
             mask = cv2.inRange(image_rgb, lower_red, upper_red)
             gray_mask = cv2.cvtColor(mask, cv2.COLOR_GRAY2BGR) 
             gray_mask_float = gray_mask.astype(np.float32)
@@ -50,15 +50,16 @@ class utilities:
             model.to(device)
             return model
 
-        def red_mask_intensity(image_path):
+        def red_mask_intensity(image_path,lower_red = [100, 0, 0], upper_red = [255, 100, 100]):
             image = cv2.imread(image_path)
             if image is None:
                 print(f"Error: Could not read the image {image_path}.")
                 return None
             image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-            lower_red = np.array([100, 0, 0])
-            upper_red = np.array([255, 100, 100])
+            lower_red = np.array(lower_red)
+            upper_red = np.array(upper_red)
             mask = cv2.inRange(image_rgb, lower_red, upper_red)
+            
             gray_mask = cv2.cvtColor(mask, cv2.COLOR_GRAY2BGR)
             gray_mask_float = gray_mask.astype(np.float32) / 255.0
             return gray_mask_float
@@ -80,8 +81,15 @@ class utilities:
             plt.axis('off')
             plt.show()
             
-        def predict(image_path, model, device=torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')):
-            image = utilities.postTrain.red_mask_intensity(image_path)
+        def predict(image_path, model, GPU = True,lower_red = [100, 0, 0], upper_red = [255, 100, 100],mask=True):
+            if GPU:
+                device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
+            else:
+                device = 'cpu'
+            if mask:
+                image = utilities.postTrain.red_mask_intensity(image_path,lower_red=lower_red,upper_red=upper_red)
+            else:
+                image = cv2.imread(image_path)
             image_tensor = F.to_tensor(image).to(device)
             
             with torch.no_grad():
@@ -92,3 +100,8 @@ class utilities:
             image = Image.open(original_image).convert("RGB")
             image_tensor = F.to_tensor(image).to(device)
             utilities.postTrain.draw_bounding_boxes(image_tensor, predictions,threshold)
+            
+# #device=torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
+# model = utilities.postTrain.load_model('fasterrcnn_model2.pth')
+# predictions = utilities.postTrain.predict('Figure_1.png',model)
+# utilities.postTrain.display_prediction('Figure_1.png',predictions,threshold=0.7)
