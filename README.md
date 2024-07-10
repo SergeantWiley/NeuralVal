@@ -43,10 +43,10 @@ dataset,train_loader = modelDataset.load_dataset('MaskImages','annotations.csv')
 If the model is not being fine tuned after prior training, then use
 
 ```python
-model = modelArch.PreTrainedArch(GPU=True,num_labels=10)
+model = modelArch.PreTrainedArch(GPU=True,num_labels=1)
 ```
 
-GPU by defualt is enabled but if its not avaliable then it will automatically switch to CPU. To force CPU usage, set GPU to False. Pass the number of labels to the num_labels or the tensor size wont be the same.
+GPU by defualt is enabled but if its not avaliable then it will automatically switch to CPU. To force CPU usage, set GPU to False. Pass the number of labels to the num_labels or the tensor size wont be the same. In our case, the only label is enemy but the number of labels is determined by how many different objects you want to detect
 
 If a model is already fine tuned from a PreTrainedArch such as FasterRCNN then it can be loaded for additional fine tuning to reduce training time by using
 
@@ -66,8 +66,8 @@ Like the model, by defualt GPU is set to True and CPU can be forced by using GPU
 
 Once a model is trained, it is saved and can be loaded seperatly however if its in a seperate file, the PreTrainedArch has to be loaded before loading the new weights
 ```python
-model = modelArch.PreTrainedArch(GPU=True) 
-model = utilities.postTrain.load_model('fasterrcnn_model.pth')
+model = modelArch.PreTrainedArch(GPU=True,num_labels=1)
+model = utilities.postTrain.load_model('fasterrcnn_model.pth',num_labels=1)
 ```
 With this new model, predictions can be made by passing the image and the model. 
 ```python
