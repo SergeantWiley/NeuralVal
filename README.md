@@ -43,10 +43,10 @@ dataset,train_loader = modelDataset.load_dataset('MaskImages','annotations.csv')
 If the model is not being fine tuned after prior training, then use
 
 ```python
-model = modelArch.PreTrainedArch(GPU=True)
+model = modelArch.PreTrainedArch(GPU=True,num_labels=10)
 ```
 
-GPU by defualt is enabled but if its not avaliable then it will automatically switch to CPU. To force CPU usage, set GPU to False. 
+GPU by defualt is enabled but if its not avaliable then it will automatically switch to CPU. To force CPU usage, set GPU to False. Pass the number of labels to the num_labels or the tensor size wont be the same.
 
 If a model is already fine tuned from a PreTrainedArch such as FasterRCNN then it can be loaded for additional fine tuning to reduce training time by using
 
