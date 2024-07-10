@@ -40,11 +40,14 @@ class utilities:
                     image_path = os.path.join(input_dir, filename)
                     utilities.preTrain.red_mask_intensity(image_path, output_dir)
     class postTrain:
-        def load_model(model_load_path,device=torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')):
-            model = fasterrcnn_resnet50_fpn(weights=FasterRCNN_ResNet50_FPN_Weights.COCO_V1)
-            num_classes = 2  # 1 class (serial number) + background
+        def load_model(model_load_path,num_labels=2, GPU = True):
+            if GPU:
+                device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
+            else:
+                device = 'cpu'
+            model = fasterrcnn_resnet50_fpn(weights=FasterRCNN_ResNet50_FPN_Weights.COCO_V1)  # 1 class (serial number) + background
             in_features = model.roi_heads.box_predictor.cls_score.in_features
-            model.roi_heads.box_predictor = FastRCNNPredictor(in_features, num_classes)
+            model.roi_heads.box_predictor = FastRCNNPredictor(in_features, num_labels+1)
             model.load_state_dict(torch.load(model_load_path))
             model.eval()
             model.to(device)

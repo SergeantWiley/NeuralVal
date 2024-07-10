@@ -16,7 +16,8 @@ class NueralVal(Dataset):
         self.img_dir = img_dir
         self.annotations = pd.read_csv(annotations_file)
         self.transform = transform
-
+        self.label_mapping = {label: idx for idx, label in enumerate(self.annotations['label'].unique(), start=1)}
+        #self.label_mapping['background'] = 0
     def __len__(self):
         return len(self.annotations)
 
@@ -25,7 +26,9 @@ class NueralVal(Dataset):
         image = Image.open(img_path).convert("RGB")
         boxes = self.annotations.iloc[idx, 1:5].values.astype('float').reshape(-1, 4)
         boxes = torch.as_tensor(boxes, dtype=torch.float32)
-        labels = torch.ones((boxes.shape[0],), dtype=torch.int64)
+        label_str = self.annotations.iloc[idx, 5]
+        label_int = self.label_mapping[label_str]
+        labels = torch.as_tensor([label_int], dtype=torch.int64)
         if self.transform:
             image = self.transform(image)
         target = {'boxes': boxes, 'labels': labels}
@@ -46,15 +49,14 @@ class modelDataset:
         return dataset,train_loader
 
 class modelArch:
-    def PreTrainedArch(GPU = True):
+    def PreTrainedArch(GPU = True, num_labels = 1):
         if GPU:
             device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
         else:
             device = 'cpu'
         model = fasterrcnn_resnet50_fpn(weights=FasterRCNN_ResNet50_FPN_Weights.COCO_V1)
-        num_classes = 2  # 1 class (serial number) + background
         in_features = model.roi_heads.box_predictor.cls_score.in_features
-        model.roi_heads.box_predictor = torchvision.models.detection.faster_rcnn.FastRCNNPredictor(in_features, num_classes)
+        model.roi_heads.box_predictor = torchvision.models.detection.faster_rcnn.FastRCNNPredictor(in_features, num_labels+1)
         model.to(device)
         return model
     def FineTundedArch(model_load_path, GPU = True):
@@ -112,6 +114,7 @@ class training:
                         time_left = round(((total_iterations - current_iteration) * avg_time_per_iteration) / 60, 2)
                     
                         print(f"Iteration {current_iteration}/{total_iterations} ({round(progress*100,2)}%), Current epoch Loss: {epoch_loss}, ETA: {time_left} min")
+                        #torch.save(model.state_dict(), 'temp.pth')
                 print(f'Epoch {epoch+1}, Loss: {epoch_loss/len(train_loader)}')
             elapsed_time = time.time() - start_time    
             torch.save(model.state_dict(), model_save_path)
