@@ -97,8 +97,3 @@ utilities.postTrain.display_prediction('Image628.jpg',predictions,threshold=0.7)
 
 As shown above, a bounding box was created predicted. To set what score should be shown and ones ignored, use the threshold. Above also prints out each part of the output tensor. This can be useful for other things such as score tracking for each image. Additionally, labels and boxes can be used for comparing seperate images to see what data needs to be focused more on. 
 
-## What it shouldn't be used for
-
-Neural Val wasnt designed to be a universal library rather a fast way to get a product up and moving. A lot of code is often standarized and that takes up a lot of code slowing down intital development so Neural Val solves that but Neural Val is not as scalable. 
-
-Neural Val Dataset is restricted by its data format which as of now, contains only one label and its called enemy. Neural Val was designed so the main focus be on the data quality while the code was already made. This reduces intital development a lot but not for final development as data formats and needs may be different format then what Neural Val Dataset class is written in. 
