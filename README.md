@@ -11,7 +11,7 @@ Clone the repositorty
 git clone https://github.com/SergeantWiley/NeuralVal.git
 ```
 
-Enter the director either manualy or through terminal
+Enter the directory either manualy or through terminal
 
 ```
 cd NeuralVal
@@ -89,7 +89,7 @@ To display these predictions,
 ```python
 print(predictions['boxes']) # Print all the boxes
 print(predictions['scores']) # Print all the scores
-print(predictions['labels']) # Preint all the labels
+print(predictions['labels']) # Print all the labels
 utilities.postTrain.display_prediction('Image628.jpg',predictions,threshold=0.7)
 ```
 
