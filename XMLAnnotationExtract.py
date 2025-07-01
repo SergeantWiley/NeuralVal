@@ -1,11 +1,11 @@
-import xml.etree.ElementTree as ET
 import csv
+import defusedxml.ElementTree
 
 # Define the input XML file and output CSV file
 input_xml_file = 'annotations.xml'
 output_csv_file = 'annotations.csv'
 
-tree = ET.parse(input_xml_file)
+tree = defusedxml.ElementTree.parse(input_xml_file)
 root = tree.getroot()
 
 # Open the CSV file for writing
